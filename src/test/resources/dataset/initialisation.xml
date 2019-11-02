@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+	<!-- Application user --> 
+ 	<DIY_USER ID="1" USERNAME="admin" EMAIL="test@test.fr" ENABLED="1" FAILED_LOGINS="0" FIRSTNAME="ADMIN" LAST_LOGIN_DATE="2017-05-05 21:51:24" LASTNAME="ADMIN" LOCKED="false" PASSWORD="$2a$10$pmOcM9zcgOt72P6OOwLPFuoL2WoZ76eqOI9bF.l/duhbE9G4qxcgm"/>
+ 	<DIY_USER ID="2" USERNAME="user" EMAIL="test@test.fr" ENABLED="1" FAILED_LOGINS="0" FIRSTNAME="user" LAST_LOGIN_DATE="2017-05-05 21:51:24" LASTNAME="user" LOCKED="false" PASSWORD="$2a$10$pmOcM9zcgOt72P6OOwLPFuoL2WoZ76eqOI9bF.l/duhbE9G4qxcgm"/>
+	<DIY_USER ID="3" USERNAME="locked" EMAIL="test@test.fr" ENABLED="0" FAILED_LOGINS="0" FIRSTNAME="user" LAST_LOGIN_DATE="2017-05-05 21:51:24" LASTNAME="user" LOCKED="true" PASSWORD="$2a$10$pmOcM9zcgOt72P6OOwLPFuoL2WoZ76eqOI9bF.l/duhbE9G4qxcgm"/>
+	<DIY_USER ID="4" USERNAME="disabled" EMAIL="test@test.fr" ENABLED="0" FAILED_LOGINS="0" FIRSTNAME="user" LAST_LOGIN_DATE="2017-05-05 21:51:24" LASTNAME="user" LOCKED="false" PASSWORD="$2a$10$pmOcM9zcgOt72P6OOwLPFuoL2WoZ76eqOI9bF.l/duhbE9G4qxcgm"/>
+	
+	<!-- Roles (admin / regular user) -->
+	<ROLE ID="1" NAME="user"/>
+	<ROLE ID="2" NAME="admin"/>
+	
+	<!-- user roles -->
+	<USER_ROLE ROLE_ID="1" USER_ID="1"/>
+	<USER_ROLE ROLE_ID="2" USER_ID="1"/>
+	<USER_ROLE ROLE_ID="1" USER_ID="2"/>
+	<USER_ROLE ROLE_ID="1" USER_ID="3"/>
+	<USER_ROLE ROLE_ID="1" USER_ID="4"/>
+	
+	<!-- Projects categories -->
+	<CATEGORY ID="1" NAME="Electronics" TYPE="Build"/>
+	<CATEGORY ID="2" NAME="Watches" TYPE="Repair"/>
+	<CATEGORY ID="3" NAME="Cameras" TYPE="Repair"/>
+	<CATEGORY ID="4" NAME="Gardening" TYPE="Other"/>
+	
+	<!-- Project budget -->
+	<BUDGET ID="1" CURRENT="20" DATE="2019-11-10 21:51:24" MAX="50"/>
+	<BUDGET ID="2" CURRENT="12" DATE="2019-11-11 21:51:24" MAX="30"/>
+	
+	<!-- Project timeline -->
+	<TIMELINE ID="1"/>
+	<TIMELINE ID="2"/>
+	
+	<TIMELINE_ACTION ID="1" ACTIONDATE="2019-11-08 21:51:24" TITLE="Starting project" DETAILS="Starting project 1 action" TIMELINE_ID="1"/>
+	<TIMELINE_ACTION ID="2" ACTIONDATE="2019-11-10 21:51:24" TITLE="Ending project" DETAILS="Ending project 1 action" TIMELINE_ID="1"/>
+	<TIMELINE_ACTION ID="3" ACTIONDATE="2019-11-09 21:51:24" TITLE="Starting project" DETAILS="Starting project 2 action" TIMELINE_ID="2"/>
+	<TIMELINE_ACTION ID="4" ACTIONDATE="2019-11-10 21:51:24" TITLE="Ending project" DETAILS="Ending project 2 action" TIMELINE_ID="2"/>
+	
+	<!-- Projects --> 
+	<PROJECT ID="1" CREATIONDATE="2019-11-09 21:51:24" TITLE="Project 1" DESCRIPTION="Description for project 1" BUDGET_ID="1" CATEGORY_ID="1" TIMELINE_ID="1" USER_ID="2"/>
+	<PROJECT ID="2" CREATIONDATE="2019-11-09 21:51:24" TITLE="Project 2" DESCRIPTION="Description for project 2" BUDGET_ID="2" CATEGORY_ID="2" TIMELINE_ID="2" USER_ID="2"/>
+		
+	<!-- Tools used for project -->
+	<TOOL ID="1" NAME="Screwdriver" PROJECT_ID="1"/>
+	<TOOL ID="2" NAME="Drill" PROJECT_ID="1"/>
+	<TOOL ID="3" NAME="Pliers" PROJECT_ID="2"/>
+	<TOOL ID="4" NAME="Hammer" PROJECT_ID="2"/>
+	
+	<!-- Supplies used for project -->
+	<SUPPLIES ID="1" NAME="Electrical tape" PRICE="2" PURCHASE_DATE="2019-11-11 21:51:24" INVOICE_ID="null" PROJECT_ID="1"/>
+	<SUPPLIES ID="2" NAME="AAA batteries" PRICE="5,5" PURCHASE_DATE="2019-11-11 21:51:24" INVOICE_ID="null" PROJECT_ID="1"/>
+	<SUPPLIES ID="3" NAME="wire jumpers" PRICE="2" PURCHASE_DATE="2019-11-11 21:51:24" INVOICE_ID="null" PROJECT_ID="2"/>
+	<SUPPLIES ID="4" NAME="Arduino uno" PRICE="10" PURCHASE_DATE="2019-11-11 21:51:24" INVOICE_ID="null" PROJECT_ID="2"/>
+		
+	<!-- Project comments -->
+	<COMMENT ID="1" COMMENTTEXT="COMMENT 1" DATETIME="2017-05-05 21:51:24" DELETED="0" MODIFIEDDATETIME="" PARENT_ID="" PROJECT_ID="" USER_ID="1"/>
+	<COMMENT ID="2" COMMENTTEXT="REPLY COMMENT 1" DATETIME="2017-05-05 21:51:24" DELETED="0" MODIFIEDDATETIME="" PARENT_ID="1" PROJECT_ID="" USER_ID="2"/>
+	<COMMENT ID="3" COMMENTTEXT="REPLY REPLY" DATETIME="2017-05-05 21:51:24" DELETED="0" MODIFIEDDATETIME="" PARENT_ID="2" PROJECT_ID="" USER_ID="1"/>
+	<COMMENT ID="4" COMMENTTEXT="COMMENT 2" DATETIME="2017-05-05 21:51:24" DELETED="0" MODIFIEDDATETIME="" PARENT_ID="" PROJECT_ID="" USER_ID="1"/>
+	
+	<!--  -->
+</dataset>
