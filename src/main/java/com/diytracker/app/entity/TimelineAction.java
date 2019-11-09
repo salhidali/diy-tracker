@@ -3,6 +3,7 @@ package com.diytracker.app.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,13 +33,14 @@ public class TimelineAction implements Serializable {
 	private static final long serialVersionUID = 6785917834871316548L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String title;
 	
 	private String details;
 	
+	@Column(name = "ACTION_DATE")
 	private Date actionDate;
 	
 	@JsonIgnore

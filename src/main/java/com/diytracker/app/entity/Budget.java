@@ -20,7 +20,7 @@ public class Budget implements Serializable {
 	private static final long serialVersionUID = -1142961329831762516L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private BigDecimal current;

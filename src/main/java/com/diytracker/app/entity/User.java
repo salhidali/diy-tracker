@@ -20,8 +20,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "DIY_USER")
+@ApiModel(description = "User entity : all user properties ")
 public class User implements Serializable {
 
 	/**
@@ -30,34 +34,44 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 7893539265404911723L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "The database generated role ID")
 	private Long id;
 	
 	@Column(name = "username", unique = true, nullable = false, length = 100, columnDefinition = "VARCHAR(100)")
+	@ApiModelProperty(notes = "The user username")
 	private String username;
 
 	@Column(name = "password", nullable = false, length = 100)
+	@ApiModelProperty(notes = "The user password")
 	private String password;
 
 	@Column(name = "firstname", nullable = false, length = 100)
+	@ApiModelProperty(notes = "The user first name")
 	private String firstname;
 	
 	@Column(name = "lastname", nullable = false, length = 100)
+	@ApiModelProperty(notes = "The user last name")
 	private String lastname;
 	
 	@Column(name = "email", nullable = false, length = 100)
+	@ApiModelProperty(notes = "The user email")
 	private String email;
 	
 	@Column(name = "failed_logins")
+	@ApiModelProperty(notes = "The user number of failed logins")
 	private Integer failedLogins;
 
 	@Column(name = "enabled")
+	@ApiModelProperty(notes = "The user status (enabled/status)")
 	private Boolean enabled;
 
 	@Column(name = "locked")
+	@ApiModelProperty(notes = "The user lock status (locked/unlocked): locked after 5 failed login attempts")
 	private Boolean locked;
 
 	@Column(name = "last_login_date", length = 23)
+	@ApiModelProperty(notes = "The user last login date")
 	private Date lastLoginDate;
 
 	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)

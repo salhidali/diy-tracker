@@ -37,19 +37,19 @@ public class Comment implements Serializable{
 	private static final long serialVersionUID = -241648888806676591L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob
-    @Column(nullable = false)
+    @Column(name="COMMENT_TEXT", nullable = false)
     @NotBlank
     private String commentText;
 
-    @Column(nullable = false)
+    @Column(name="DATE_TIME", nullable = false)
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime dateTime;
 
-    @Column(nullable = true)
+    @Column(name="MODIFIED_DATE_TIME", nullable = true)
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime modifiedDateTime;
 

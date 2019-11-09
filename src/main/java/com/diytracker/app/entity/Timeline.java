@@ -29,7 +29,7 @@ public class Timeline implements Serializable {
 	private static final long serialVersionUID = 6785917834871316548L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "timeline")

@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Project implements Serializable{
 	private static final long serialVersionUID = 182253648873709140L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	//Project title
@@ -47,6 +48,7 @@ public class Project implements Serializable{
 	private String description;
 	
 	//Project creation date only : updates will be handled in the timeline.
+	@Column(name = "CREATION_DATE")
 	private Date creationDate;
 	
     @OneToOne(cascade = CascadeType.ALL)

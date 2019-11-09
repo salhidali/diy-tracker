@@ -9,9 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
 @Table(name = "ROLE")
+@ApiModel(description = "Role entity : user roles (ADMIN_ROLE/USER_ROLE)")
 public class Role implements Serializable {
 
 	
@@ -21,10 +25,12 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = -6778040320020780058L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(notes = "The database generated role ID")
 	private int id;
 
 	@Column(name = "name", nullable = false, length = 50)
+	@ApiModelProperty(notes = "The role name (ADMIN_ROLE/USER_ROLE)")
 	private String name;
 
 	public Role() {
