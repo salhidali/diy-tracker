@@ -15,12 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
+import com.diytracker.app.util.LogConstants;
+
 public class MDCLoggingFilter implements Filter {
 
-    private static final String REQUEST_ID = "requestId";
-	private static final String USERNAME_MDC = "username";
-	private static final String REQUEST_URL = "requestUrl";
-	private static final String USERNAME_CONST = USERNAME_MDC;
     
 	private static final Logger NEW_REQ = LoggerFactory.getLogger("com.diytracker.app.NEWREQ");
 	private static final Logger REQUEST = LoggerFactory.getLogger("com.diytracker.app.REQUEST");
@@ -35,21 +33,21 @@ public class MDCLoggingFilter implements Filter {
     	
     	HttpServletRequest httpServletRequest = (HttpServletRequest)request;
     	
-    	MDC.put(REQUEST_URL, httpServletRequest.getServletPath());
+    	MDC.put(LogConstants.REQUEST_URL_MDC_KEY, httpServletRequest.getServletPath());
     	
-    	 String usernameHeader = httpServletRequest.getHeader(USERNAME_MDC);
+    	 String usernameHeader = httpServletRequest.getHeader(LogConstants.USERNAME_MDC_KEY);
     	 
          if (usernameHeader != null ) {
-             MDC.put(USERNAME_MDC, usernameHeader);
+             MDC.put(LogConstants.USERNAME_MDC_KEY, usernameHeader);
          } else {
-        	 MDC.put(USERNAME_MDC, "anonymous");
+        	 MDC.put(LogConstants.USERNAME_MDC_KEY, "anonymous");
          }
 
         String requestIdHeader = httpServletRequest.getHeader("requestId");
         if (requestIdHeader != null ) {
-        	MDC.put(REQUEST_ID, requestIdHeader);
+        	MDC.put(LogConstants.REQUEST_ID_MDC_KEY, requestIdHeader);
         } else {
-        	MDC.put(REQUEST_ID, UUID.randomUUID().toString());
+        	MDC.put(LogConstants.REQUEST_ID_MDC_KEY, UUID.randomUUID().toString());
         }
         
         String userAgentHeader = httpServletRequest.getHeader("user-agent");
@@ -65,9 +63,9 @@ public class MDCLoggingFilter implements Filter {
         	long duration = System.currentTimeMillis() - startTime;
         	REQUEST.info(" Execution time = " + duration + " ms");
             // remove the key once you are done with it
-        	MDC.remove(REQUEST_URL);
-        	MDC.remove(USERNAME_MDC);
-        	MDC.remove(REQUEST_ID);
+        	MDC.remove(LogConstants.REQUEST_URL_MDC_KEY);
+        	MDC.remove(LogConstants.USERNAME_MDC_KEY);
+        	MDC.remove(LogConstants.REQUEST_ID_MDC_KEY);
         }
     }
     

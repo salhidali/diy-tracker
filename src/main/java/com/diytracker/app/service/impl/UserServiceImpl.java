@@ -19,9 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.diytracker.app.entity.Role;
 import com.diytracker.app.entity.User;
 import com.diytracker.app.exception.ResourceNotFoundException;
+import com.diytracker.app.logging.CustomLogger;
 import com.diytracker.app.repository.RoleRepository;
 import com.diytracker.app.repository.UserRepository;
 import com.diytracker.app.service.UserService;
+import com.diytracker.app.util.LogConstants;
 
 
 /**
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User user = userRepository.findByUsername(username);
 
 		if (user == null) {
-			LOGGER.error("User not found!");
+			CustomLogger.logError(LogConstants.SERVICE_LOGGER, "User not found!", username);
 			throw new UsernameNotFoundException("Invalid username or password");
 		}
 
@@ -98,7 +100,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public User getUser(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
-			LOGGER.error("User not found!");
+			CustomLogger.logError(LogConstants.SERVICE_LOGGER, "User not found!", username);
 			throw new UsernameNotFoundException("Invalid username or password");
 		}
 
@@ -185,7 +187,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public void deleteUser(String username) throws ResourceNotFoundException {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
-			LOGGER.error("User not found!");
+			CustomLogger.logError(LogConstants.SERVICE_LOGGER, "User not found!", username);
 			throw new ResourceNotFoundException("Invalid username or password");
 		}
 

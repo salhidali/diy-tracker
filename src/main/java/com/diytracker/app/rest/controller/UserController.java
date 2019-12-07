@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.diytracker.app.entity.User;
+import com.diytracker.app.logging.CustomLogger;
 import com.diytracker.app.service.UserService;
+import com.diytracker.app.util.LogConstants;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,9 +37,6 @@ public class UserController {
 //	@Autowired
 //	JwtTokenUtil jwtTokenUtil;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
-
 //	@Value("${jwt.secret}")
 //	private String tokenSecret;
 //	
@@ -55,9 +54,8 @@ public class UserController {
             @ApiResponse(code = 404, message = "The API could not be found")
     })
 	public @ResponseBody User getUser() {
-		
 		//String username = jwtTokenUtil.getUsernameFromToken(token.substring(7));
-		LOGGER.info("Returning the user account for user {}.", "test");
+		//CustomLogger.logInfo(LogConstants.REST_LOGGER, "Returning the user account for user {}.", "test");
 		
 		return userService.getUser("test");
 	}

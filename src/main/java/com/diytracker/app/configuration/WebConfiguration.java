@@ -4,6 +4,7 @@ package com.diytracker.app.configuration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.annotation.Order;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -14,6 +15,7 @@ import com.diytracker.app.logging.MDCLoggingFilter;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableAspectJAutoProxy
 public class WebConfiguration {// implements WebMvcConfigurer {
 
 

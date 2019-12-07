@@ -71,7 +71,6 @@ public class UserServiceImplTest extends AbstractServiceTest {
 		User user = userService.saveLastLoginDate("test");
 		
 		assertEquals(new Date().getDay(), user.getLastLoginDate().getDay());
-		
 	}
 	
 	@Test
